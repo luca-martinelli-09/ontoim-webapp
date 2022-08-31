@@ -1,6 +1,9 @@
 export async function load({ params }) {
-  const post = await import(`../${params.slug}.md`)
-  const meta = post.metadata
+  const post = await import(`/src/lib/reports/${params.slug}.svelte`)
+  const meta = {
+    thumb: '/thumb.png',
+    ...post.metadata
+  }
   const content = post.default
 
   return {

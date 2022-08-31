@@ -3,8 +3,9 @@ module.exports = {
   content: ['./src/**/*.{html,js,svelte,ts}'],
   theme: {
     fontFamily: {
-      body: ['"Open Sans"', "sans-serif"],
-      serif: ['"Noto Serif"', "serif"]
+      body: ['"Noto Serif"', 'serif'],
+      monospace: ['"Belgrano"', 'serif'],
+      sans: ['"Open Sans"', 'sans-serif'],
     },
     extend: {},
   },

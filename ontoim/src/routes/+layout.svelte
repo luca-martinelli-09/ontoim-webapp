@@ -8,8 +8,10 @@
 
 <Header />
 
-<main>
-  <slot />
+<main class="my-16 min-h-screen px-3">
+  <div class="max-w-screen-lg mx-auto">
+    <slot />
+  </div>
 </main>
 
 <Footer />

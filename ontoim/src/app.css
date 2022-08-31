@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,700;1,400;1,700&family=Open+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Belgrano&family=Noto+Serif:ital,wght@0,400;0,700;1,400;1,700&family=Open+Sans:wght@400;600&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -8,6 +8,6 @@ body {
   @apply bg-[#E9DAC1] ;
 }
 
-h1 {
-  @apply font-serif;
+nav a {
+  @apply hover:text-[#781D42];
 }

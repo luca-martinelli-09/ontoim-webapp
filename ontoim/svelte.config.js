@@ -27,13 +27,7 @@ const config = {
 				rehypeSlug,
 				accessibleEmojis,
 				[rehypeAutolinkHeadings, {
-					behavior: 'append',
-					content: {
-						type: 'element',
-						tagName: 'span',
-						properties: { className: ['heading-link'] },
-						children: [{ type: 'text', value: '#' }]
-					}
+					behavior: 'append'
 				}]
 			]
 		})

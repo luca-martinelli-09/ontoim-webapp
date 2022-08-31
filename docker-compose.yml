@@ -20,15 +20,6 @@ services:
       - .env
     ports:
       - 9090:8080
-  
-  ontoim:
-    container_name: ontoim
-    build:
-      context: ontoim/
-    env_file:
-      - .env
-    ports:
-      - "3000:3000"
 
 #    
 #  graphdb:
