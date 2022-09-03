@@ -6,7 +6,7 @@
   const p = style.substring(3);
 
   const limitDate = new Date();
-  limitDate.setDate(limitDate.getDate() - 5);
+  limitDate.setDate(limitDate.getDate() - 2);
 
   let fontClass;
   let imageClass;
@@ -14,6 +14,9 @@
   let gapClass;
 
   switch (d) {
+    case "xs":
+      fontClass = "text-xs font-sans";
+      break;
     case "sm":
       fontClass = "text-xl";
       imageClass = "w-32 h-full";
@@ -50,19 +53,24 @@
   imageClass = p == "top" ? "w-full" : imageClass;
 </script>
 
-<a href={report.path} class="flex {gridClass} gap-3">
+<a href={report.path} class="flex {d == 'xs' ? 'items-center' : ''} {gridClass} gap-3" title={report.meta.title}>
   {#if report.meta.thumb}
     <div>
-      <img src={report.meta.thumb} alt={report.meta.title} class="{imageClass} max-h-96 object-cover rounded-sm" />
+      <img src={report.meta.thumb} alt={report.meta.title} class="{imageClass} max-h-96 object-cover {d == 'xs' ? 'rounded-full aspect-square w-16' : 'rounded-sm'}" />
     </div>
   {/if}
   <div class="flex flex-1 flex-col {gapClass}">
-    <div>
-      <span class="font-sans text-xs opacity-70 {new Date(report.meta.date) > limitDate ? "font-bold px-1 y-2 bg-[#B91646] text-white rounded-sm" : ""}">{new Date(report.meta.date).toLocaleDateString()}</span>
-    </div>
     <h2 class="{fontClass} inline-flex items-center gap-4">
-      <span>{report.meta.title}</span>
+      <span>{d == "xs" && report.meta.title.length > 15 ? report.meta.title.slice(0, 15) + "..." : report.meta.title}</span>
     </h2>
+    {#if d != "xs"}
+      <div>
+        <span class="font-sans font-bold text-xs opacity-70 {new Date(report.meta.date) > limitDate ? 'px-1 y-2 bg-[#B91646] text-white rounded-sm' : ''}"
+          >{new Date(report.meta.date).toLocaleDateString()}</span
+        >
+      </div>
+    {/if}
+    <!--
     {#if report.meta.keywords && d != "sm"}
       <p class="flex gap-1 mt-1 flex-wrap">
         {#each report.meta.keywords as keyword}
@@ -70,5 +78,6 @@
         {/each}
       </p>
     {/if}
+    -->
   </div>
 </a>
