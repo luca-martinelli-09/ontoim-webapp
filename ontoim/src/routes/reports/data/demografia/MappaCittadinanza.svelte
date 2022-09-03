@@ -1,4 +1,6 @@
 <script>
+  import { onMount } from "svelte";
+
   import { querySPARQL, sparqlToArray, ERROR, LOADING, SUCCESS } from "$lib/utils";
 
   import Graph from "$lib/components/data/Graph.svelte";
@@ -6,9 +8,6 @@
   import Selector from "$lib/components/Selector.svelte";
 
   import * as echarts from "echarts";
-  import { worldJSON } from "$lib/res/world.js";
-
-  echarts.registerMap("WORLD", worldJSON);
 
   const query = `
     prefix ontoim: <https://w3id.org/ontoim/>
@@ -58,16 +57,21 @@
   let years;
   let selectedYear;
 
-  querySPARQL({
-    query: query,
-    success: (res) => {
-      data = sparqlToArray(res);
-      status = SUCCESS;
+  onMount(async () => {
+    const worldJSON = await (await fetch("/maps/world.geo.json")).json();
+    echarts.registerMap("WORLD", worldJSON);
 
-      years = [...new Set(data.map((el) => el.Anno))];
-      selectedYear = years.at(-1);
-    },
-    error: (_) => (status = ERROR),
+    querySPARQL({
+      query: query,
+      success: (res) => {
+        data = sparqlToArray(res);
+        status = SUCCESS;
+
+        years = [...new Set(data.map((el) => el.Anno))];
+        selectedYear = years.at(-1);
+      },
+      error: (_) => (status = ERROR),
+    });
   });
 </script>
 
@@ -85,6 +89,8 @@
         formatter: "{c}",
       },
       visualMap: {
+        min: 0,
+        max: Math.max(...data.filter((el) => el.Anno == selectedYear).map((el) => el.Totale)),
         calculable: true,
       },
       series: [
@@ -92,7 +98,7 @@
           type: "map",
           roam: true,
           map: "WORLD",
-          nameProperty: "iso_a3",
+          nameProperty: "ISO_A3",
           data: data
             .filter((el) => el.Anno == selectedYear)
             .map((el) => {
