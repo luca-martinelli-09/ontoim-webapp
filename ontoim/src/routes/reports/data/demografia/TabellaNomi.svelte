@@ -51,8 +51,8 @@
 
 <Status {status} />
 
-<Selector name="sex-dem-names" options={["Maschi", "Femmine", "Totale"]} defaultSelection="Totale" onSelect={(sex) => (sexType = sex)} />
-
 {#if data}
+  <Selector name="sex-dem-names" options={["Maschi", "Femmine", "Totale"]} defaultSelection="Totale" onSelect={(sex) => (sexType = sex)} />
+
   <Table headers={["Nome", sexType]} data={data.filter((el) => el.Nome && el[sexType])} />
 {/if}

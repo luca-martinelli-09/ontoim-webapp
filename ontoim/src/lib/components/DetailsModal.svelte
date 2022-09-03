@@ -5,7 +5,7 @@
   export let title;
 </script>
 
-<div class="fixed inset-0 bg-black bg-opacity-30 overflow-auto pb-10 z-50" on:click={close}>
+<div class="fixed inset-0 bg-black bg-opacity-30 overflow-auto pb-10 z-[9999]" on:click={close}>
   <div on:click|stopPropagation class="mt-16 bg-background-light border-2 border-black max-w-screen-lg w-full mx-auto shadow-lg rounded-sm p-5">
     <div class="flex items-center mb-5 justify-between">
       {#if title}

@@ -6,37 +6,44 @@
   import Selector from "$lib/components/Selector.svelte";
 
   const query = `
-    prefix tiapit: <https://w3id.org/italia/onto/TI/>
-    prefix clvapit: <https://w3id.org/italia/onto/CLV/>
-    prefix ontoim: <https://w3id.org/ontoim/>
     prefix cpvapit: <https://w3id.org/italia/onto/CPV/>
-    prefix sex: <https://w3id.org/italia/controlled-vocabulary/classifications-for-people/sex/>
+    prefix ontoim: <https://w3id.org/ontoim/>
+    prefix tiapit: <https://w3id.org/italia/onto/TI/>
     prefix dc: <http://purl.org/dc/elements/1.1/>
-
-    select ?Anno ?Località (sum(?Maschi) as ?Maschi) (sum(?Femmine) as ?Femmine) (sum(?Totale) as ?Totale) where {
+    prefix skos: <http://www.w3.org/2004/02/skos/core#>
+    prefix civilstatuscategories: <https://w3id.org/ontoim/controlled-vocabulary/civil-status-categories/>
+    prefix dct: <http://purl.org/dc/terms/>
+    prefix sex: <https://w3id.org/italia/controlled-vocabulary/classifications-for-people/sex/>
+    select ?Anno ?Categoria (sum(?Maschi) as ?Maschi) (sum(?Femmine) as ?Femmine) (sum(?Totale) as ?Totale) where {
+        values ?category {
+            civilstatuscategories:A.5
+            civilstatuscategories:A.6
+        }
         {
-            select ?te ?spatialCoverage ?Maschi where {
-                ?popM tiapit:hasTemporalEntity ?te ;
-                            clvapit:hasSpatialCoverage ?spatialCoverage ;
-                            ontoim:hasDemographicReference ?df ;
-                            ontoim:observationValue ?Maschi .
+            select ?Anno ?Maschi ?category where {
+                ?civilStatus a ontoim:CivilStatus ;
+                            tiapit:hasTemporalEntity ?ti ;
+                            ontoim:observationValue ?Maschi ;
+                            ontoim:hasCivilStatusCategory ?category ;
+                            ontoim:hasDemographicReference ?df .
                 ?df cpvapit:hasSex sex:M .
+                ?ti tiapit:year ?Anno .
             }
         } union {
-            select ?te ?spatialCoverage ?Femmine where {
-                ?popF tiapit:hasTemporalEntity ?te ;
-                            clvapit:hasSpatialCoverage ?spatialCoverage ;
-                            ontoim:hasDemographicReference ?df ;
-                            ontoim:observationValue ?Femmine .
+            select ?Anno ?Femmine ?category where {
+                ?civilStatus a ontoim:CivilStatus ;
+                            tiapit:hasTemporalEntity ?ti ;
+                            ontoim:observationValue ?Femmine ;
+                            ontoim:hasCivilStatusCategory ?category ;
+                            ontoim:hasDemographicReference ?df .
                 ?df cpvapit:hasSex sex:F .
+                ?ti tiapit:year ?Anno .
             }
-        } .
-        ?te tiapit:year ?Anno .
-        ?spatialCoverage dc:title ?Località .
-        
-        bind ((coalesce(?Maschi, 0) + coalesce(?Femmine, 0)) as ?Totale)
-    } group by ?Anno ?Località
-    order by asc(?Anno) asc(?Località)
+        }
+        bind ((coalesce(?Maschi, 0) + coalesce(?Femmine, 0)) as ?Totale) .
+        bind(if(?category = civilstatuscategories:A.5, "Nati nel matrimonio", "Nati fuori dal matrimonio") as ?Categoria)
+    } group by ?Anno ?Categoria
+    order by ?Anno ?Categoria
   `;
 
   let status = LOADING;
@@ -44,8 +51,6 @@
   let data;
   let years;
   let selectedYear;
-
-  const localitiesColors = { Lugagnano: "#80FFA5", Sona: "#00DDFF", "San Giorgio In Salici": "#FF0087", Palazzolo: "#FFBF00" };
 
   querySPARQL({
     query: query,
@@ -63,7 +68,7 @@
 <Status {status} />
 
 {#if years}
-  <Selector name="year-dem-sunburst-pop" options={years} defaultSelection={selectedYear} onSelect={(year) => (selectedYear = year)} />
+  <Selector name="year-sc-sunburst-nati" options={years} defaultSelection={selectedYear} onSelect={(year) => (selectedYear = year)} />
 {/if}
 
 {#if data}
@@ -78,11 +83,8 @@
           .filter((el) => el.Anno == selectedYear)
           .map((el) => {
             return {
-              name: el["Località"],
+              name: el.Categoria,
               value: parseInt(el.Totale),
-              itemStyle: {
-                color: localitiesColors[el["Località"]],
-              },
               children: [
                 {
                   name: "Maschi",

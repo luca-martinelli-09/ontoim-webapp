@@ -106,6 +106,7 @@
         trigger: "axis",
       },
       legend: {
+        top: "bottom",
         data: [...new Set(data.map((el) => el["Località"]))],
       },
       xAxis: [

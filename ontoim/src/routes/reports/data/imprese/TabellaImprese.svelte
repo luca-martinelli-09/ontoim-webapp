@@ -23,7 +23,7 @@
             separator=",") as ?Ateco) 
     (group_concat(distinct ?AtecoDesc;
             separator=";;") as ?AtecoDesc) where {
-        ?organization a+ ontoim:PrivateOrganization ;
+        ?organization a/rdfs:subClassOf* ontoim:PrivateOrganization ;
                       covapit:VATnumber ?Partita__IVA ;
                       covapit:legalName ?Denominazione .
         optional {

@@ -55,7 +55,7 @@ export const sparqlToArray = (sparqlResults) => {
 }
 
 export const resolveTemplate = (template, data) => {
-  return template.replace(/\{([^\{\}]*)\}/g, (_, k) => data[k]);
+  return template.replace(/\{([^\{\}]*)\}/g, (_, k) => data[k] || "");
 }
 
 export const groupBy = (array, key) => {

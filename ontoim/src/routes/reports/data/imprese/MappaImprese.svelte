@@ -16,7 +16,7 @@
         values ?prop {
             clvapit:hasPrimaryAddress ontoim:hasLocalUnitAddress
         }
-        ?organization a+ ontoim:PrivateOrganization ;
+        ?organization a/rdfs:subClassOf* ontoim:PrivateOrganization ;
                       ?prop ?address ;
                       covapit:VATnumber ?Partita_IVA ;
                       covapit:legalName ?Denominazione .
