@@ -1,4 +1,4 @@
-<script>
+<script>  
   export let data;
 
   const limitDate = new Date();

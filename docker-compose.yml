@@ -20,17 +20,24 @@ services:
       - .env
     ports:
       - 9090:8080
+  
+  ontoim:
+    container_name: ontoim
+    build:
+      context: ontoim/
+    ports:
+      - 3000:3000
 
-#    
-#  graphdb:
-#    container_name: graphdb
-#    image: "ontotext/graphdb:10.0.2"
-#    volumes:
-#      - graphdb:/opt/graphdb/home
-#    ports:
-#      - "7200:7200"
-#
+    
+  graphdb:
+    container_name: graphdb
+    image: "ontotext/graphdb:10.0.2"
+    volumes:
+      - graphdb:/opt/graphdb/home
+    ports:
+      - "7200:7200"
+
 
 volumes:
   virtuosodb:
-#  graphdb:
+  graphdb:

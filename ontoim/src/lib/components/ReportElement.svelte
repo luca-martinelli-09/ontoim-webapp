@@ -8,59 +8,59 @@
   const limitDate = new Date();
   limitDate.setDate(limitDate.getDate() - 5);
 
-  let fontSize;
-  let imageSize;
-  let gridStyle;
-  let gap;
+  let fontClass;
+  let imageClass;
+  let gridClass;
+  let gapClass;
 
   switch (d) {
     case "sm":
-      fontSize = "text-xl";
-      imageSize = "w-32 h-full";
-      gap = "1";
+      fontClass = "text-xl";
+      imageClass = "w-32 h-full";
+      gapClass = "gap-1";
       break;
     case "md":
-      fontSize = "text-2xl";
-      imageSize = "w-64 h-full";
-      gap = "1";
+      fontClass = "text-2xl";
+      imageClass = "w-64 h-full";
+      gapClass = "gap-1";
       break;
     default:
-      fontSize = "text-3xl lg:text-4xl";
-      imageSize = "w-full aspect-video";
-      gap = "2";
+      fontClass = "text-3xl lg:text-4xl";
+      imageClass = "w-full aspect-video";
+      gapClass = "gap-2";
       break;
   }
 
   switch (p) {
     case "right":
-      gridStyle = "flex-row-reverse items-center";
+      gridClass = "flex-row-reverse items-center";
       break;
     case "left":
-      gridStyle = "flex-row items-center";
+      gridClass = "flex-row items-center";
       break;
     case "bottom":
-      gridStyle = "flex-col-reverse";
+      gridClass = "flex-col-reverse";
       break;
     default:
-      gridStyle = "flex-col";
-      imageSize = "w-full";
+      gridClass = "flex-col";
+      imageClass = "w-full";
       break;
   }
 
-  imageSize = p == "top" ? "w-full" : imageSize;
+  imageClass = p == "top" ? "w-full" : imageClass;
 </script>
 
-<a href={report.path} class="flex {gridStyle} gap-3">
+<a href={report.path} class="flex {gridClass} gap-3">
   {#if report.meta.thumb}
     <div>
-      <img src={report.meta.thumb} alt={report.meta.title} class="{imageSize} max-h-96 object-cover rounded-sm" />
+      <img src={report.meta.thumb} alt={report.meta.title} class="{imageClass} max-h-96 object-cover rounded-sm" />
     </div>
   {/if}
-  <div class="flex flex-1 flex-col gap-{gap}">
+  <div class="flex flex-1 flex-col {gapClass}">
     <div>
       <span class="font-sans text-xs opacity-70 {new Date(report.meta.date) > limitDate ? "font-bold px-1 y-2 bg-[#B91646] text-white rounded-sm" : ""}">{new Date(report.meta.date).toLocaleDateString()}</span>
     </div>
-    <h2 class="{fontSize} inline-flex items-center gap-4">
+    <h2 class="{fontClass} inline-flex items-center gap-4">
       <span>{report.meta.title}</span>
     </h2>
     {#if report.meta.keywords && d != "sm"}

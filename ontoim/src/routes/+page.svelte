@@ -19,7 +19,7 @@
 {/if}
 
 {#if data.reports.length > 4}
-  <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-7 mt-7 md:mt-16 border-t border-zinc-400 pt-10">
+  <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-7 mt-7 md:mt-16 border-t border-divider pt-10">
     {#each data.reports.slice(5, 11) as report}
       <ReportElement {report} style="sm-top" />
     {/each}

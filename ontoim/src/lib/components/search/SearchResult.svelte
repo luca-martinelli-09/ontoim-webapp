@@ -2,7 +2,7 @@
   export let report;
 </script>
 
-<a href={report.path} class="flex space-x-3 items-center border-b py-4 border-[#DFD8CA] last:border-0">
+<a href={report.path} class="flex space-x-3 items-center border-b py-4 border-divider last:border-0">
   {#if report.meta.thumb}
     <div>
       <img src={report.meta.thumb} alt={report.meta.title} class="w-32 aspect-video object-cover rounded-sm" />

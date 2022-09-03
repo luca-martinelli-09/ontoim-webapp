@@ -30,11 +30,11 @@
 </script>
 
 <div class="fixed inset-0 bg-black bg-opacity-30 overflow-auto pb-10 z-50" on:click={toggleSearch}>
-  <div on:click|stopPropagation class="mt-16 bg-[#F5EDDC] border-2 border-black max-w-screen-lg w-full mx-auto shadow-lg rounded-sm">
+  <div on:click|stopPropagation class="mt-16 bg-background-light border-2 border-black max-w-screen-lg w-full mx-auto shadow-lg rounded-sm">
     <input on:input={searchReports} id="search-input" class="w-full bg-transparent outline-none py-3 px-5 font-sans placeholder:text-black" type="text" {placeholder} />
 
     {#if searchResults}
-      <div class="py-3 mx-5 mt-2 border-t border-y-zinc-400">
+      <div class="py-3 mx-5 mt-2 border-t border-y-divider">
         {#if searchResults.length > 0}
           <div class="flex flex-col">
             {#each searchResults as report}

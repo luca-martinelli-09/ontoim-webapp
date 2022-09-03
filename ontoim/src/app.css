@@ -5,7 +5,7 @@
 @tailwind utilities;
 
 body {
-  @apply bg-[#E9DAC1] ;
+  @apply bg-background;
 }
 
 nav a {

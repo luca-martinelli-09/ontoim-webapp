@@ -4,7 +4,7 @@
   const openDataUrl = import.meta.env.VITE_OPEN_DATA_URL;
 </script>
 
-<nav class="bg-[#F5EDDC] border-b-2 border-black py-3 px-3 text-sm font-sans font-semibold">
+<nav class="bg-background-light border-b-2 border-black py-3 px-3 text-sm font-sans font-semibold">
   <ul class="justify-center max-w-screen-lg mx-auto flex space-x-8">
     <li><a href="/">Home</a></li>
     <li><a href="/reports">Tutti i report</a></li>
