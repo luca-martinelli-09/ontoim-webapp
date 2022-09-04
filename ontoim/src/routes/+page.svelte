@@ -9,7 +9,7 @@
 
 {#if fixedReports.length > 0}
   <div class="flex gap-3 mb-20">
-    <div class="flex flex-1 gap-3 flex-nowrap overflow-auto pr-5">
+    <div class="flex flex-1 gap-3 flex-nowrap overflow-auto pr-5 pb-5">
       {#each fixedReports as report}
         <ReportElement {report} style="xs-top" />
       {/each}

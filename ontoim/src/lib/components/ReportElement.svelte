@@ -53,7 +53,7 @@
   imageClass = p == "top" ? "w-full" : imageClass;
 </script>
 
-<a href={report.path} class="flex {d == 'xs' ? 'items-center' : ''} {gridClass} gap-3" title={report.meta.title}>
+<a href={report.path} class="flex {d == 'xs' ? 'items-center shrink-0' : ''} {gridClass} gap-3" title={report.meta.title}>
   {#if report.meta.thumb}
     <div>
       <img src={report.meta.thumb} alt={report.meta.title} class="{imageClass} max-h-96 object-cover {d == 'xs' ? 'rounded-full aspect-square w-16' : 'rounded-sm'}" />
