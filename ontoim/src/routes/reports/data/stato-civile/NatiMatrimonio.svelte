@@ -107,15 +107,15 @@
           {},
           {
             r0: "10%",
-            r: "80%",
+            r: "75%",
             itemStyle: {
               borderWidth: 5,
               borderRadius: 10,
             },
           },
           {
-            r0: "80%",
-            r: "85%",
+            r0: "75%",
+            r: "80%",
             label: {
               rotate: "tangential",
               position: "outside",

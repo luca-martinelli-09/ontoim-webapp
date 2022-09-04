@@ -26,22 +26,22 @@
       <thead class="text-xs uppercase">
         <tr class="border-b-2 border-black">
           {#each headers as header}
-            <th scope="col" class="py-2 px-6">{header.replace("__", " ")}</th>
+            <th scope="col" class="py-2 px-6 whitespace-nowrap">{header.replace("__", " ")}</th>
           {/each}
           {#if openModal || customAction}
-            <th scole="col" class="w-0" />
+            <th scole="col" class="w-0 whitespace-nowrap" />
           {/if}
         </tr>
       </thead>
       <tbody>
         {#each data as row, i}
           <tr class="border-b border-divider">
-            <th scope="col" class="py-2 px-6 font-bold">{row[headers[0]] ? row[headers[0]].trim() : ""}</th>
+            <th scope="col" class="py-2 px-6 font-bold whitespace-nowrap">{row[headers[0]] ? row[headers[0]].trim() : ""}</th>
             {#each headers.slice(1) as h}
-              <td class="py-2 px-6">{row[h] ? row[h].trim() : ""}</td>
+              <td class="py-2 px-6 whitespace-nowrap">{row[h] ? row[h].trim() : ""}</td>
             {/each}
             {#if openModal || customAction}
-              <td scole="col" class="w-0 py-2 px-6 align-bottom">
+              <td scole="col" class="w-0 py-2 px-6 align-bottom whitespace-nowrap">
                 <button on:click={handleAction} data-id={i} class="text-2xl text-blue-800 align-bottom">
                   <Icon icon={customActionIcon || "ion:information-circle-outline"} />
                 </button>
