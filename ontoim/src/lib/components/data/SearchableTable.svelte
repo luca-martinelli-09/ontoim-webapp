@@ -7,6 +7,9 @@
   export let data;
   export let openModal;
 
+  export let customAction;
+  export let customActionIcon;
+
   let filteredData = [];
 
   function filterData(e) {
@@ -35,7 +38,7 @@
 </div>
 
 {#if filteredData.length > 0}
-  <Table {headers} data={filteredData} {openModal} />
+  <Table {headers} data={filteredData} {openModal} {customAction} {customActionIcon} />
 {:else}
   <Message message="Nessun risultato da elencare. Inizia a cercare o prova a cambiare ricerca." />
 {/if}

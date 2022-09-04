@@ -1,6 +1,6 @@
 ---
 title: Associazioni
-date: 2022-08-31
+date: 2022-09-04
 fixed: true
 keywords:
   - associazioni

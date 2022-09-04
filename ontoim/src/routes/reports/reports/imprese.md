@@ -1,6 +1,6 @@
 ---
 title: Imprese
-date: 2022-09-02
+date: 2022-09-04
 fixed: true
 keywords:
   - economia

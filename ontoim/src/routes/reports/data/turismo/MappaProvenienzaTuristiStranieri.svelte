@@ -32,15 +32,36 @@
     order by ?Anno desc(?Totale)
   `;
 
+  const queryNames = `
+    prefix atold: <http://publications.europa.eu/resource/authority/>
+    prefix skos: <http://www.w3.org/2004/02/skos/core#>
+    prefix dc: <http://purl.org/dc/elements/1.1/>
+    
+    select distinct ?ISO ?Nazionalità where {
+        ?c skos:inScheme atold:country ;
+          skos:prefLabel ?Nazionalità ;
+          dc:identifier ?ISO .
+        filter (lang(?Nazionalità) = "it")
+    }
+  `;
+
   let status = LOADING;
 
   let data;
+  let stateNames;
   let years;
   let selectedYear;
 
   onMount(async () => {
     const worldJSON = await (await fetch("/maps/world.geo.json")).json();
     echarts.registerMap("WORLD", worldJSON);
+
+    querySPARQL({
+      query: queryNames,
+      success: (res) => {
+        stateNames = sparqlToArray(res);
+      },
+    });
 
     querySPARQL({
       query: query,
@@ -80,17 +101,22 @@
           roam: true,
           map: "WORLD",
           nameProperty: "ISO_A3",
-          data: data
-            .filter((el) => el.Anno == selectedYear)
-            .map((el) => {
-              return {
+          data: Object.values(
+            stateNames.reduce((sv, el) => {
+              const dataVal = data.filter((d) => d.Anno == selectedYear && d.ISO == el.ISO).pop();
+              (sv || {})[el.ISO] = {
                 name: el.ISO,
                 label: {
                   formatter: el["Nazionalità"],
                 },
-                value: el.Totale,
+                value: dataVal?.Totale || 0,
+                itemStyle: {
+                  color: dataVal ? null : "#eee",
+                },
               };
-            }),
+              return sv;
+            }, {})
+          ),
         },
       ],
     }}

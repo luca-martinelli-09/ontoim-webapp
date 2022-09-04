@@ -29,7 +29,7 @@
   }
 </script>
 
-<div class="fixed inset-0 bg-black bg-opacity-30 overflow-auto pb-10 z-[9999]" on:click={toggleSearch}>
+<div class="fixed inset-0 bg-black bg-opacity-30 overflow-auto pb-10 z-[9999] px-2" on:click={toggleSearch}>
   <div on:click|stopPropagation class="mt-16 bg-background-light border-2 border-black max-w-screen-lg w-full mx-auto shadow-lg rounded-sm">
     <input on:input={searchReports} id="search-input" class="w-full bg-transparent outline-none py-3 px-5 font-sans placeholder:text-black" type="text" {placeholder} />
 
