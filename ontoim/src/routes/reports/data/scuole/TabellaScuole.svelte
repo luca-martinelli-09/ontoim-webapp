@@ -72,7 +72,7 @@
 <Status {status} />
 
 {#if data}
-  <Table headers={["Denominazione", "Indirizzo", "Categoria", "Tipo__Scuola"]} {data} openModal={(ref) => (modalData = ref)} />
+  <Table headers={["Denominazione", "Indirizzo", "Categoria", "Tipo__Scuola", "Istituto__Comprensivo"]} {data} openModal={(ref) => (modalData = ref)} />
 {/if}
 
 {#if modalData}
