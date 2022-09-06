@@ -113,7 +113,7 @@
         {/if}
         {#if modalData.Servizi}
           <h4 class="font-bold">Altri servizi</h4>
-          <div class="flex gap-4">
+          <div class="flex gap-4 flex-wrap">
             {#each modalData.Servizi?.split(",") || [] as Servizi}
               <span>{Servizi}</span>
             {/each}

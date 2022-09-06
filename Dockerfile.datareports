@@ -2,12 +2,13 @@ FROM node:current-alpine as builder
 
 WORKDIR /app
 
-COPY package*.json ./
+COPY datareports/package*.json ./
 
 RUN npm ci
 RUN npm audit fix
 
-COPY . .
+COPY datareports .
+COPY .env ./
 
 RUN npm run build
 

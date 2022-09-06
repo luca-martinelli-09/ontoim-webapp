@@ -21,10 +21,11 @@ services:
     ports:
       - 9090:8080
   
-  ontoim:
-    container_name: ontoim
+  datareports:
+    container_name: datareports
     build:
-      context: ontoim/
+      context: .
+      dockerfile: Dockerfile.datareports
     ports:
       - 3000:3000
 

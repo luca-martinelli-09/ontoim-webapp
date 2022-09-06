@@ -110,7 +110,7 @@
       {/if}
       {#if modalData.Ateco}
         <h4 class="font-bold">Codici ateco</h4>
-        <div class="flex gap-4">
+        <div class="flex gap-4 flex-wrap">
           {#each modalData.Ateco?.split(",") || [] as Ateco}
             <span>{Ateco}</span>
           {/each}

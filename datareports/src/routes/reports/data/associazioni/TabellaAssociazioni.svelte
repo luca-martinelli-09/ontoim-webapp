@@ -114,7 +114,7 @@
       {/if}
       {#if modalData.socialLinks}
         <h4 class="font-bold">Social</h4>
-        <div class="flex gap-4">
+        <div class="flex gap-4 flex-wrap">
           {#each modalData.socialLinks?.split(",") || [] as slink, i}
             <a class="underline" target="_blank" rel="noopener noreferrer" href={slink}>
               {modalData.socialTypes?.split(",")[i]}
