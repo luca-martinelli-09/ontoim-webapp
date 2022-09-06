@@ -6,7 +6,6 @@
   import "leaflet/dist/leaflet.css";
   import "leaflet.markercluster/dist/MarkerCluster.css";
   import "leaflet.markercluster/dist/MarkerCluster.Default.css";
-  import markerIcon from "leaflet/dist/images/marker-icon.png";
 
   export let height = "420px";
   export let view;
@@ -27,7 +26,7 @@
       const L = await import("leaflet");
       const L1 = await import("leaflet.markercluster");
 
-      const icon = L.icon({ iconUrl: markerIcon, iconSize: [25, 41], iconAnchor: [12, 41] });
+      const icon = L.icon({ iconUrl: "/maps/map-marker.png", iconSize: [32, 37], iconAnchor: [16, 37] });
 
       map = L.map("map").setView(view.position, view.zoom);
       L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
