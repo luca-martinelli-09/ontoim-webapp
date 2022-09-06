@@ -1,7 +1,0 @@
-VITE_SPARQL_ENDPOINT = https://lod.sona.eu.org/sparql
-VITE_PA_NAME = Comune di Sona
-VITE_PA_URL = https://comune.sona.vr.it
-VITE_PA_CF = 00500760236
-VITE_PA_ADDRESS = "Piazza Roma, 1, 37060 - Sona (VR)"
-VITE_OPEN_DATA_URL = https://dati.sona.eu.org
-VITE_LODVIEW_HOMEURL = https://lod.sona.eu.org
