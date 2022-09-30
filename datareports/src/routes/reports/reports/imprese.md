@@ -2,6 +2,7 @@
 title: Imprese
 date: 2022-09-04
 fixed: true
+thumb: /reports/thumb-organizations.png
 keywords:
   - economia
 ---

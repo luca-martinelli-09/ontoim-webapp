@@ -1,6 +1,7 @@
 ---
 title: Dati demografici
 date: 2022-09-04
+thumb: /reports/thumb-demography.png
 keywords:
   - anagrafe
 ---

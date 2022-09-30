@@ -1,6 +1,7 @@
 ---
 title: Flussi migratori e cittadinanza
 date: 2022-09-04
+thumb: /reports/thumb-migration.png
 keywords:
   - anagrafe
   - stato civile

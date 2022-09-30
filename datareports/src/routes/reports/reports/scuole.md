@@ -2,6 +2,7 @@
 title: Scuole
 date: 2022-09-04
 fixed: true
+thumb: /reports/thumb-schools.png
 keywords:
   - scuole
 ---

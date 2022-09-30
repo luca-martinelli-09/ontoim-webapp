@@ -2,6 +2,7 @@
 title: Il Comune
 date: 2022-09-04
 fixed: true
+thumb: https://bussola.s3.eu-west-1.amazonaws.com/133241/FACCIATA%20MUNICIPIO.jpg
 keywords:
   - pubblica amministrazione
 ---

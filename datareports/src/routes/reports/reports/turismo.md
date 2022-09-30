@@ -2,6 +2,7 @@
 title: Strutture ricettive e turismo
 date: 2022-09-04
 fixed: true
+thumb: /reports/thumb-tourism.png
 keywords:
   - turismo
 ---

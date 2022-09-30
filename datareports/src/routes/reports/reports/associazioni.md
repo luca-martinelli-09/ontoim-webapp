@@ -2,6 +2,7 @@
 title: Associazioni
 date: 2022-09-04
 fixed: true
+thumb: /reports/thumb-associations.png
 keywords:
   - associazioni
 ---

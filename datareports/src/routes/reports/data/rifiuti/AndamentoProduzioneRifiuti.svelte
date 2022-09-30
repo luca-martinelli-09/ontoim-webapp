@@ -12,7 +12,7 @@
     prefix tiapit: <https://w3id.org/italia/onto/TI/>
     prefix skos: <http://www.w3.org/2004/02/skos/core#>
 
-    select ?Anno ?Categoria ?Totale where {
+    select distinct ?Anno ?Categoria ?Totale where {
         ?rif a ontoim:WasteProduction ;
             ontoim:hasWasteCategory ?wC ;
             tiapit:hasTemporalEntity ?ti ;

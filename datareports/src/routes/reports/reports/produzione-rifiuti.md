@@ -1,6 +1,7 @@
 ---
 title: Produzione di rifiuti
 date: 2022-09-04
+thumb: /reports/thumb-waste.png
 keywords:
   - ambiente
 ---
