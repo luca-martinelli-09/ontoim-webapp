@@ -1,6 +1,7 @@
 ---
 title: Stradario
 date: 2022-09-04
+thumb: /reports/thumb-streets.png
 keywords:
   - territorio
 ---

@@ -1,6 +1,7 @@
 ---
 title: Stato Civile (nati, morti, matrimoni)
 date: 2022-09-04
+thumb: /reports/thumb-civil-status.png
 keywords:
   - stato civile
 ---
